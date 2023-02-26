@@ -6,9 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles/input.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
-    <h1 class="text-4xl">Hello Tailwind CSS!</h1>
-    <script src="./build/app-bundle.js"></script>
+  <div class="w-[100%] h-screen flex flex-col">
+    <div id="new-task-form" class="absolute w-full h-full backdrop-blur-sm invisible transition duration-1000 ease-in-out">
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md w-1/3 h-2/3 bg-blue-800">
+        <div id="task-form-exit" class="absolute top-0 right-0 py-2 px-2 cursor-pointer"><strong>x</strong></div>
+        <form class="flex flex-col justify-between items-center h-full px-8 py-8 text-white" id="task-form" name="task-form">
+          <div class="w-full">
+            <label for="tname">Task Name:</label>
+            <input name="tname" id="tname" class="w-full text-black px-2 py-2 rounded-sm" type="text" form="task-form" required>
+          </div>
+          <div class="w-full">
+            <label for="project">Project:</label>
+            <select name="projects" id="projects" class="w-full text-black px-2 py-2 rounded-sm" form="task-form" required>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <div class="w-full">
+            <label for="tdesc">Description:</label>
+            <textarea name="tdesc" id="tdesc" rows="0" cols="0" class="w-full px-2 py-2 text-black rounded-sm" form="task-form" placeholder="Enter descripted here" required></textarea>
+          </div>
+          <div class="w-full">
+            <label for="tdate">Date</label>
+            <input name="tdate" id="tdate" class="w-full text-black px-2 py-2 rounded-sm" type="date" min="2023-02-22" form="task-form" required>
+          </div>
+          <label>Priority:</label>
+          <div class="w-full flex justify-center text-black">
+            <label for="low" class="bg-green-400 rounded-sm">Low</label>
+            <input type="radio" id="low" name="tprio" value="Low" checked>
+            <label for="med" class="bg-yellow-400 rounded-sm">Medium</label>
+            <input type="radio" id="med" name="tprio" value="Medium">
+            <label for="high" class="bg-red-400 rounded-sm">High</label>
+            <input type="radio" id="high" name="tprio" value="High">
+          </div>
+          <input id="task-submit" class="bg-amber-500 text-black px-6 py-2 my-2 rounded-sm cursor-pointer" type="submit" value="Submit">
+          <!--<button id="task-submit" class="bg-amber-500 text-black px-6 py-2 my-2 rounded-sm cursor-pointer">submit</button> -->
+        </form>
+      </div>
+    </div>
+    <nav class="flex flex-row w-full items-center justify-between px-4 py-4 shadow-sm bg-amber-200">
+      <h1 class="text-blue-800 text-xl"><strong>TODO LIST</strong></h1>
+      <ul class="flex flex-row justify-around basis-1/4 text-blue-800">
+        <li id="create-task" class="cursor-pointer">New Task</li>
+        <li class="cursor-pointer">New Project</li>
+      </ul>
+    </nav>
+    <main class="flex flex-row h-full">
+      <nav id="projects-list" class="basis-1/4 bg-amber-50">
+        <ul class="flex flex-col gap-4 px-6 py-12">
+          <!--
+          <div class="bg-blue-800 px-6 py-2 rounded-md text-white">
+            <span>General</span>
+          </div>
+          <div class="bg-amber-200 px-6 py-2 rounded-md">
+            <span>New Project</span>
+          </div>
+          -->
+        </ul>
+      </nav>
+      <section class="basis-3/4 flex flex-col px-12 py-12">
+        <h1 id="project-name">General</h1>
+        <section id="tasks-lists" class="flex flex-col gap-2">
+          <!--
+          <div>
+            <div class="py-4"></div>
+            <div class="w-full flex flex-row rounded-md justify-around py-6 px-6 bg-gray-100 text-center">
+              <h2 class="basis-1/6">Name</h2>
+              <span class="basis-3/6">Descriptio adfasdfas asdf asdf asdf asdf asdf asdf asd n</span>
+              <div>
+                <span class="shrink cursor-pointer">Complete</span>
+                <input type="checkbox">
+              </div>
+              <div>
+                <span class="shrink cursor-pointer">Delete</span>
+                <input type="checkbox">
+              </div>
+            </div>
+          </div>
+          -->
+        </section>
+
+      </section>
+    </main>
+  </div>
+<script src="./build/app-bundle.js"></script>
 </body>
 </html>
